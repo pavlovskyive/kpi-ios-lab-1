@@ -18,36 +18,36 @@ class DrawingViewController: UIViewController {
             self,
             action: #selector(segmentedControlValueChanged(sender:)),
             for: .valueChanged)
-        
+
         return control
     }()
-    
+
     lazy var views = [
         SinView(),
         PieView()
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
     }
-    
+
     private func setupViews() {
         view.backgroundColor = .systemBackground
         view.addSubview(segmentedControl)
-        
+
         views.reversed().forEach { view.addSubview($0) }
-        
+
         setupConstraints()
     }
-    
+
     private func setupConstraints() {
         segmentedControl.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(view.snp.topMargin).inset(50)
             make.centerX.equalToSuperview()
         }
-        
+
         views.forEach { view in
             view.snp.makeConstraints { (make) -> Void in
                 make.center.equalToSuperview()
@@ -59,7 +59,7 @@ class DrawingViewController: UIViewController {
             }
         }
     }
-    
+
     @objc
     private func segmentedControlValueChanged(sender: UISegmentedControl) {
         view.bringSubviewToFront(views[sender.selectedSegmentIndex])

@@ -8,16 +8,16 @@
 import UIKit
 
 class PieView: UIView {
-    
+
     typealias Segment = (value: CGFloat, color: UIColor)
-    
+
     lazy var segments: [Segment] = [
         (value: 5, color: .brown),
         (value: 5, color: .systemTeal),
         (value: 10, color: .orange),
         (value: 80, color: .blue)
     ]
-    
+
     override func draw(_ rect: CGRect) {
 
         let center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
@@ -29,8 +29,18 @@ class PieView: UIView {
             let endAngle = startAngle + segment.value / total
 
             let slice = UIBezierPath()
-            slice.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-            slice.addArc(withCenter: center, radius: radius / 2, startAngle: endAngle, endAngle: startAngle, clockwise: false)
+            slice.addArc(withCenter: center,
+                         radius: radius,
+                         startAngle: startAngle,
+                         endAngle: endAngle,
+                         clockwise: true)
+
+            slice.addArc(withCenter: center,
+                         radius: radius / 2,
+                         startAngle: endAngle,
+                         endAngle: startAngle,
+                         clockwise: false)
+
             slice.close()
 
             segment.color.setFill()
@@ -39,13 +49,13 @@ class PieView: UIView {
             startAngle = endAngle
          }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         backgroundColor = .systemBackground
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
