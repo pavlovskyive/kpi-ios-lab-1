@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7961AF9A25CF1AAA00E419ED /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7961AF9925CF1AAA00E419ED /* SnapKit */; };
+		7961AF9D25CF1F6B00E419ED /* SinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961AF9C25CF1F6B00E419ED /* SinView.swift */; };
+		7961AFA125CF245900E419ED /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961AFA025CF245900E419ED /* PieView.swift */; };
 		79FC66D625CE6D7D00C5E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66D525CE6D7D00C5E15D /* AppDelegate.swift */; };
 		79FC66D825CE6D7D00C5E15D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66D725CE6D7D00C5E15D /* SceneDelegate.swift */; };
 		79FC66DF25CE6D8000C5E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FC66DE25CE6D8000C5E15D /* Assets.xcassets */; };
@@ -17,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7961AF9C25CF1F6B00E419ED /* SinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinView.swift; sourceTree = "<group>"; };
+		7961AFA025CF245900E419ED /* PieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
 		79FC66D225CE6D7D00C5E15D /* KPI-iOS-Lab-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KPI-iOS-Lab-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FC66D525CE6D7D00C5E15D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FC66D725CE6D7D00C5E15D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,12 +38,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7961AF9A25CF1AAA00E419ED /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7961AF9F25CF244B00E419ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7961AF9C25CF1F6B00E419ED /* SinView.swift */,
+				7961AFA025CF245900E419ED /* PieView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		79FC66C925CE6D7C00C5E15D = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +73,7 @@
 		79FC66D425CE6D7D00C5E15D /* KPI-iOS-Lab-1 */ = {
 			isa = PBXGroup;
 			children = (
+				7961AF9F25CF244B00E419ED /* View */,
 				79FC66FA25CE909F00C5E15D /* Storyboard */,
 				79FC66F925CE908B00C5E15D /* Application */,
 				79FC66EB25CE6E1200C5E15D /* Controller */,
@@ -110,6 +126,9 @@
 			dependencies = (
 			);
 			name = "KPI-iOS-Lab-1";
+			packageProductDependencies = (
+				7961AF9925CF1AAA00E419ED /* SnapKit */,
+			);
 			productName = "KPI-iOS-Lab-1";
 			productReference = 79FC66D225CE6D7D00C5E15D /* KPI-iOS-Lab-1.app */;
 			productType = "com.apple.product-type.application";
@@ -137,6 +156,9 @@
 				Base,
 			);
 			mainGroup = 79FC66C925CE6D7C00C5E15D;
+			packageReferences = (
+				7961AF9825CF1AAA00E419ED /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 79FC66D325CE6D7D00C5E15D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -163,7 +185,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7961AFA125CF245900E419ED /* PieView.swift in Sources */,
 				79FC66ED25CE6E6600C5E15D /* TabBarController.swift in Sources */,
+				7961AF9D25CF1F6B00E419ED /* SinView.swift in Sources */,
 				79FC66D625CE6D7D00C5E15D /* AppDelegate.swift in Sources */,
 				79FC66D825CE6D7D00C5E15D /* SceneDelegate.swift in Sources */,
 				79FC66F125CE721A00C5E15D /* MainViewController.swift in Sources */,
@@ -236,7 +260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -291,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -363,6 +387,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7961AF9825CF1AAA00E419ED /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7961AF9925CF1AAA00E419ED /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7961AF9825CF1AAA00E419ED /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 79FC66CA25CE6D7C00C5E15D /* Project object */;
 }
