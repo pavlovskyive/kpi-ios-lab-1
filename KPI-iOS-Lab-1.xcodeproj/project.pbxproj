@@ -16,7 +16,7 @@
 		79FC66E225CE6D8000C5E15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FC66E025CE6D8000C5E15D /* LaunchScreen.storyboard */; };
 		79FC66ED25CE6E6600C5E15D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66EC25CE6E6600C5E15D /* TabBarController.swift */; };
 		79FC66F125CE721A00C5E15D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66F025CE721A00C5E15D /* MainViewController.swift */; };
-		79FC66F425CE722500C5E15D /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66F325CE722500C5E15D /* SecondaryViewController.swift */; };
+		79FC66F425CE722500C5E15D /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66F325CE722500C5E15D /* DrawingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		79FC66E325CE6D8000C5E15D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79FC66EC25CE6E6600C5E15D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		79FC66F025CE721A00C5E15D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		79FC66F325CE722500C5E15D /* SecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
+		79FC66F325CE722500C5E15D /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 			children = (
 				79FC66EC25CE6E6600C5E15D /* TabBarController.swift */,
 				79FC66F025CE721A00C5E15D /* MainViewController.swift */,
-				79FC66F325CE722500C5E15D /* SecondaryViewController.swift */,
+				79FC66F325CE722500C5E15D /* DrawingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 				79FC66D625CE6D7D00C5E15D /* AppDelegate.swift in Sources */,
 				79FC66D825CE6D7D00C5E15D /* SceneDelegate.swift in Sources */,
 				79FC66F125CE721A00C5E15D /* MainViewController.swift in Sources */,
-				79FC66F425CE722500C5E15D /* SecondaryViewController.swift in Sources */,
+				79FC66F425CE722500C5E15D /* DrawingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,35 +14,30 @@ class PieView: UIView {
     lazy var segments: [Segment] = [
         (value: 5, color: .brown),
         (value: 5, color: .systemTeal),
-        (value: 10, color: .systemOrange),
-        (value: 80, color: .systemBlue)
+        (value: 10, color: .orange),
+        (value: 80, color: .blue)
     ]
     
     override func draw(_ rect: CGRect) {
 
-        let context = UIGraphicsGetCurrentContext()
-
-        let radius = min(frame.size.width, frame.size.height) * 0.5
-        let viewCenter = CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5)
-        let valueCount = segments.reduce(0, {$0 + $1.value})
-        var startAngle = -CGFloat.pi * 0.5
+        let center = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height / 2.0)
+        let radius = min(bounds.size.width, bounds.size.height) / 2.0
+        let total: CGFloat = segments.reduce(0) { $0 + $1.value } / (2 * .pi)
+        var startAngle = CGFloat(0)
 
         for segment in segments {
+            let endAngle = startAngle + segment.value / total
 
-            let endAngle = startAngle + 2 * .pi * (segment.value / valueCount)
-            
-            context?.setFillColor(segment.color.cgColor)
-            context?.move(to: viewCenter)
-            context?.addArc(
-                center: viewCenter,
-                radius: radius,
-                startAngle: startAngle,
-                endAngle: endAngle,
-                clockwise: false)
-            context?.fillPath()
-            
+            let slice = UIBezierPath()
+            slice.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            slice.addArc(withCenter: center, radius: radius / 2, startAngle: endAngle, endAngle: startAngle, clockwise: false)
+            slice.close()
+
+            segment.color.setFill()
+            slice.fill()
+
             startAngle = endAngle
-        }
+         }
     }
     
     override init(frame: CGRect) {

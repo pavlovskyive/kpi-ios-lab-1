@@ -1,5 +1,5 @@
 //
-//  SecondaryViewController.swift
+//  DrawingViewController.swift
 //  KPI-iOS-Lab-1
 //
 //  Created by Vsevolod Pavlovskyi on 06.02.2021.
@@ -44,14 +44,18 @@ class DrawingViewController: UIViewController {
     
     private func setupConstraints() {
         segmentedControl.snp.makeConstraints { (make) -> Void in
-            make.bottom.equalTo(view.snp.bottomMargin).inset(20)
+            make.bottom.equalTo(view.snp.topMargin).inset(50)
             make.centerX.equalToSuperview()
         }
         
         views.forEach { view in
             view.snp.makeConstraints { (make) -> Void in
                 make.center.equalToSuperview()
-                make.width.height.equalTo(200)
+                make.width.equalTo(view.snp.height)
+                make.top.greaterThanOrEqualTo(self.segmentedControl.snp.bottom).offset(20)
+                make.bottom.lessThanOrEqualTo(self.view.snp.bottomMargin).inset(20)
+                make.height.equalToSuperview().priority(.low)
+                make.width.lessThanOrEqualToSuperview().inset(20)
             }
         }
     }
