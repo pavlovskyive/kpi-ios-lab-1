@@ -15,7 +15,8 @@ class TabBarController: UITabBarController {
 
     lazy var tabs: [Tab] = [
         ("Main", UIImage(systemName: "house"), MainViewController()),
-        ("Drawing", UIImage(systemName: "pencil.and.outline"), DrawingViewController())
+        ("Drawing", UIImage(systemName: "pencil.and.outline"), DrawingViewController()),
+        ("Books", UIImage(systemName: "book"), BooksViewController())
     ]
 
     // MARK: - Lifecycle
