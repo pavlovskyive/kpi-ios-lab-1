@@ -10,36 +10,51 @@ import SnapKit
 
 class BooksViewController: UIViewController {
 
-    var storageProvider: StorageProvider = FileStorage()
+    public var storageProvider: StorageProvider = FileStorage()
 
-    var library: Library? {
+    private var books: [Book] = [] {
         didSet {
             tableView.reloadData()
         }
     }
 
+    private var filteredBooks = [Book]()
+
     lazy var tableView = UITableView(frame: view.bounds)
+
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+
+        searchController.obscuresBackgroundDuringPresentation = false
+
+        searchController.searchBar.placeholder = "Search Books"
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.searchBarStyle = .prominent
+
+        return searchController
+    }()
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
+
+        navigationItem.title = "Library"
+
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        searchController.isActive = true
 
         setupTableView()
         getBooksData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
     private func setupTableView() {
 
         tableView.dataSource = self
+        tableView.delegate = self
 
         view.addSubview(tableView)
         tableView.backgroundColor = .systemBackground
@@ -57,39 +72,91 @@ class BooksViewController: UIViewController {
         storageProvider.getBooks { [weak self] result in
             switch result {
             case .success(let library):
-                self?.library = library
-            case .failure(let error):
-                print(error)
+                self?.books = library.books
+            case .failure:
+                break
             }
+        }
+    }
+
+    private func filterContentForSearchText(searchText: String) {
+        filteredBooks = books.filter {
+            $0.title.lowercased().contains(searchText.lowercased())
         }
     }
 }
 
 extension BooksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        library?.books.count ?? 0
+        if !(searchController.searchBar.text?.isEmpty ?? true) {
+            return filteredBooks.count
+        }
+        return books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellID") as! BookCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellID") as? BookCell else {
+            fatalError("Could not cast cell")
+        }
 
-        guard let book = library?.books[indexPath.row] else {
-            return cell
+        let book: Book
+
+        if !(searchController.searchBar.text?.isEmpty ?? true) {
+            book = filteredBooks[indexPath.row]
+        } else {
+            book = books[indexPath.row]
         }
 
         cell.titleLabel.text = book.title
         cell.subtitleLabel.text = book.subtitle
         cell.priceLabel.text = book.price
 
-        storageProvider.getImage(for: book) { result in
+        storageProvider.getImage(for: book.image) { result in
             switch result {
             case .success(let image):
                 cell.cellImageView.image = image
-            case .failure(let error):
-                print(error)
+            case .failure:
+                let image = UIImage(systemName: "book.closed")?.withRenderingMode(.alwaysTemplate)
+                cell.cellImageView.image = image
+                cell.cellImageView.tintColor = .secondaryLabel
             }
         }
 
         return cell
+    }
+}
+
+extension BooksViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let book: Book
+
+        if !(searchController.searchBar.text?.isEmpty ?? true) {
+            book = filteredBooks[indexPath.row]
+        } else {
+            book = books[indexPath.row]
+        }
+
+        storageProvider.getDetailedBook(with: book.isbn13) { [weak self] result in
+            switch result {
+            case .success(let detailedBook):
+                let detailedBookViewController = DetailedBookViewContoller()
+                detailedBookViewController.storageProvider = self?.storageProvider
+                detailedBookViewController.detailedBook = detailedBook
+
+                self?.navigationController?.pushViewController(detailedBookViewController, animated: true)
+            case .failure(let error):
+                print(error)
+            }
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+}
+
+extension BooksViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text ?? "")
+        tableView.reloadData()
     }
 }

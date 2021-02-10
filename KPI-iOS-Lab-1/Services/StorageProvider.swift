@@ -9,5 +9,6 @@ import UIKit
 
 protocol StorageProvider {
     func getBooks(completionHandler: @escaping (Result<Library, Error>) -> Void)
-    func getImage(for book: Book, completionHandler: @escaping (Result<UIImage, Error>) -> Void)
+    func getImage(for imageName: String, completionHandler: @escaping (Result<UIImage, Error>) -> Void)
+    func getDetailedBook(with identifier: String, completionHandler: @escaping (Result<DetailedBook, Error>) -> Void)
 }

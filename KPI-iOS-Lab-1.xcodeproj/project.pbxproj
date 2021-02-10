@@ -25,6 +25,17 @@
 		7961AFA125CF245900E419ED /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7961AFA025CF245900E419ED /* PieView.swift */; };
 		7966E84E25D03D33005EA9DD /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7966E84C25D03D33005EA9DD /* BookCell.swift */; };
 		7966E84F25D03D33005EA9DD /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7966E84D25D03D33005EA9DD /* BookCell.xib */; };
+		797DB72C25D1305400741952 /* 9781449308360.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72225D1305200741952 /* 9781449308360.txt */; };
+		797DB72D25D1305400741952 /* 9781430238072.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72325D1305200741952 /* 9781430238072.txt */; };
+		797DB72E25D1305400741952 /* 9781430236054.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72425D1305200741952 /* 9781430236054.txt */; };
+		797DB72F25D1305400741952 /* 9781430237105.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72525D1305200741952 /* 9781430237105.txt */; };
+		797DB73025D1305400741952 /* 9781430260226.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72625D1305300741952 /* 9781430260226.txt */; };
+		797DB73125D1305400741952 /* 9781430245124.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72725D1305300741952 /* 9781430245124.txt */; };
+		797DB73225D1305400741952 /* 9781449342753.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72825D1305300741952 /* 9781449342753.txt */; };
+		797DB73325D1305400741952 /* 9780321862969.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72925D1305300741952 /* 9780321862969.txt */; };
+		797DB73425D1305400741952 /* 9780321856715.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72A25D1305300741952 /* 9780321856715.txt */; };
+		797DB73525D1305400741952 /* 9781118841471.txt in Resources */ = {isa = PBXBuildFile; fileRef = 797DB72B25D1305400741952 /* 9781118841471.txt */; };
+		797DB73825D1315A00741952 /* DetailedBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DB73725D1315A00741952 /* DetailedBookViewController.swift */; };
 		79FC66D625CE6D7D00C5E15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66D525CE6D7D00C5E15D /* AppDelegate.swift */; };
 		79FC66D825CE6D7D00C5E15D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FC66D725CE6D7D00C5E15D /* SceneDelegate.swift */; };
 		79FC66DF25CE6D8000C5E15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FC66DE25CE6D8000C5E15D /* Assets.xcassets */; };
@@ -52,6 +63,17 @@
 		7961AFA025CF245900E419ED /* PieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
 		7966E84C25D03D33005EA9DD /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		7966E84D25D03D33005EA9DD /* BookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
+		797DB72225D1305200741952 /* 9781449308360.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781449308360.txt; sourceTree = "<group>"; };
+		797DB72325D1305200741952 /* 9781430238072.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781430238072.txt; sourceTree = "<group>"; };
+		797DB72425D1305200741952 /* 9781430236054.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781430236054.txt; sourceTree = "<group>"; };
+		797DB72525D1305200741952 /* 9781430237105.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781430237105.txt; sourceTree = "<group>"; };
+		797DB72625D1305300741952 /* 9781430260226.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781430260226.txt; sourceTree = "<group>"; };
+		797DB72725D1305300741952 /* 9781430245124.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781430245124.txt; sourceTree = "<group>"; };
+		797DB72825D1305300741952 /* 9781449342753.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781449342753.txt; sourceTree = "<group>"; };
+		797DB72925D1305300741952 /* 9780321862969.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9780321862969.txt; sourceTree = "<group>"; };
+		797DB72A25D1305300741952 /* 9780321856715.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9780321856715.txt; sourceTree = "<group>"; };
+		797DB72B25D1305400741952 /* 9781118841471.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9781118841471.txt; sourceTree = "<group>"; };
+		797DB73725D1315A00741952 /* DetailedBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBookViewController.swift; sourceTree = "<group>"; };
 		79FC66D225CE6D7D00C5E15D /* KPI-iOS-Lab-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KPI-iOS-Lab-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FC66D525CE6D7D00C5E15D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FC66D725CE6D7D00C5E15D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +100,7 @@
 		7927F6DF25D012B900CE5200 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				797DB72125D1304100741952 /* DetailedBooks */,
 				7927F6ED25D0130200CE5200 /* BooksList.txt */,
 				7927F6E425D0130200CE5200 /* Images */,
 			);
@@ -127,6 +150,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		797DB72125D1304100741952 /* DetailedBooks */ = {
+			isa = PBXGroup;
+			children = (
+				797DB72A25D1305300741952 /* 9780321856715.txt */,
+				797DB72925D1305300741952 /* 9780321862969.txt */,
+				797DB72B25D1305400741952 /* 9781118841471.txt */,
+				797DB72425D1305200741952 /* 9781430236054.txt */,
+				797DB72525D1305200741952 /* 9781430237105.txt */,
+				797DB72325D1305200741952 /* 9781430238072.txt */,
+				797DB72725D1305300741952 /* 9781430245124.txt */,
+				797DB72625D1305300741952 /* 9781430260226.txt */,
+				797DB72225D1305200741952 /* 9781449308360.txt */,
+				797DB72825D1305300741952 /* 9781449342753.txt */,
+			);
+			path = DetailedBooks;
+			sourceTree = "<group>";
+		};
 		79FC66C925CE6D7C00C5E15D = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +204,7 @@
 				79FC66F025CE721A00C5E15D /* MainViewController.swift */,
 				79FC66F325CE722500C5E15D /* DrawingViewController.swift */,
 				7927F6FF25D0194200CE5200 /* BooksViewController.swift */,
+				797DB73725D1315A00741952 /* DetailedBookViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,17 +292,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FC66E225CE6D8000C5E15D /* LaunchScreen.storyboard in Resources */,
+				797DB73425D1305400741952 /* 9780321856715.txt in Resources */,
+				797DB72F25D1305400741952 /* 9781430237105.txt in Resources */,
 				7927F6F525D0130200CE5200 /* Image_08.png in Resources */,
 				7927F6F025D0130200CE5200 /* Image_03.png in Resources */,
+				797DB73525D1305400741952 /* 9781118841471.txt in Resources */,
 				7927F6F325D0130200CE5200 /* Image_10.png in Resources */,
+				797DB72E25D1305400741952 /* 9781430236054.txt in Resources */,
+				797DB72C25D1305400741952 /* 9781449308360.txt in Resources */,
 				7927F6F125D0130200CE5200 /* Image_07.png in Resources */,
 				7927F6F225D0130200CE5200 /* Image_06.png in Resources */,
+				797DB73325D1305400741952 /* 9780321862969.txt in Resources */,
 				7927F6F425D0130200CE5200 /* Image_05.png in Resources */,
 				79FC66DF25CE6D8000C5E15D /* Assets.xcassets in Resources */,
+				797DB73225D1305400741952 /* 9781449342753.txt in Resources */,
 				7966E84F25D03D33005EA9DD /* BookCell.xib in Resources */,
+				797DB73025D1305400741952 /* 9781430260226.txt in Resources */,
 				7927F6EE25D0130200CE5200 /* Image_01.png in Resources */,
+				797DB72D25D1305400741952 /* 9781430238072.txt in Resources */,
 				7927F6EF25D0130200CE5200 /* Image_02.png in Resources */,
 				7927F6F625D0130200CE5200 /* BooksList.txt in Resources */,
+				797DB73125D1305400741952 /* 9781430245124.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +328,7 @@
 				7927F6FD25D015E400CE5200 /* FileStorage.swift in Sources */,
 				7927F70025D0194200CE5200 /* BooksViewController.swift in Sources */,
 				7961AFA125CF245900E419ED /* PieView.swift in Sources */,
+				797DB73825D1315A00741952 /* DetailedBookViewController.swift in Sources */,
 				79FC66ED25CE6E6600C5E15D /* TabBarController.swift in Sources */,
 				7961AF9D25CF1F6B00E419ED /* SinView.swift in Sources */,
 				79FC66D625CE6D7D00C5E15D /* AppDelegate.swift in Sources */,

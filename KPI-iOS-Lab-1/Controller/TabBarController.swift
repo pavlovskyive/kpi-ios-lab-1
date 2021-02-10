@@ -26,11 +26,6 @@ class TabBarController: UITabBarController {
         setupTabBar()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
     // MARK: - Setups
 
     private func setupTabBar() {
@@ -41,12 +36,12 @@ class TabBarController: UITabBarController {
         viewControllers = tabBarList
     }
 
-    func setupTab(tab: Tab) -> UIViewController {
+    func setupTab(tab: Tab) -> UINavigationController {
 
         let tag = viewControllers?.count ?? 0
         let tabBarItem = UITabBarItem(title: tab.title, image: tab.image, tag: tag)
         tab.viewController.tabBarItem = tabBarItem
 
-        return tab.viewController
+        return UINavigationController(rootViewController: tab.viewController)
     }
 }

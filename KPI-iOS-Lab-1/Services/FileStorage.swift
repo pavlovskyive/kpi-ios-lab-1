@@ -24,9 +24,7 @@ class FileStorage: StorageProvider {
         }
     }
 
-    func getImage(for book: Book, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
-
-        let imageName = book.image
+    func getImage(for imageName: String, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
         guard !imageName.isEmpty,
               let image = UIImage(named: imageName) else {
             completionHandler(.failure(FileStorageError.couldNotLoadImage))
@@ -34,6 +32,22 @@ class FileStorage: StorageProvider {
         }
 
         completionHandler(.success(image))
+    }
+
+    func getDetailedBook(with identifier: String, completionHandler: @escaping (Result<DetailedBook, Error>) -> Void) {
+        do {
+            guard let path = Bundle.main.path(forResource: identifier, ofType: "txt"),
+                  let jsonData = try String(contentsOfFile: path).data(using: .utf8) else {
+                completionHandler(.failure(FileStorageError.couldNotReadFile))
+                return
+            }
+
+            let detailedBook = try JSONDecoder().decode(DetailedBook.self, from: jsonData)
+            completionHandler(.success(detailedBook))
+
+        } catch {
+            completionHandler(.failure(error))
+        }
     }
 }
 
