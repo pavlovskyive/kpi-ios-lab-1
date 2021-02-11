@@ -45,6 +45,9 @@ class BooksViewController: UIViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
 
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBookHandler))
+
         searchController.isActive = true
 
         setupTableView()
@@ -83,6 +86,12 @@ class BooksViewController: UIViewController {
         filteredBooks = books.filter {
             $0.title.lowercased().contains(searchText.lowercased())
         }
+    }
+
+    @objc private func addBookHandler() {
+        let addBookViewController = UINavigationController(rootViewController: AddBookViewController())
+
+        present(addBookViewController, animated: true)
     }
 }
 
@@ -127,6 +136,11 @@ extension BooksViewController: UITableViewDataSource {
 }
 
 extension BooksViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.appearWithAnimation(delay: Double(indexPath.row) * 0.05)
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let book: Book
