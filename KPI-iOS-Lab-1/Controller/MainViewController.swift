@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
 
@@ -46,9 +47,8 @@ class MainViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        label.snp.makeConstraints { (make) -> Void in
+            make.center.equalToSuperview()
+        }
     }
 }

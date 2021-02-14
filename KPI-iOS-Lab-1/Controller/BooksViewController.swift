@@ -12,12 +12,7 @@ class BooksViewController: UIViewController {
 
     public var storageProvider: StorageProvider = FileStorage()
 
-    private var books: [Book] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-
+    private var books: [Book] = []
     private var filteredBooks = [Book]()
 
     lazy var tableView = UITableView(frame: view.bounds)
@@ -76,6 +71,7 @@ class BooksViewController: UIViewController {
             switch result {
             case .success(let library):
                 self?.books = library.books
+                self?.tableView.reloadData()
             case .failure:
                 break
             }
@@ -89,9 +85,10 @@ class BooksViewController: UIViewController {
     }
 
     @objc private func addBookHandler() {
-        let addBookViewController = UINavigationController(rootViewController: AddBookViewController())
+        let addBookViewController = AddBookViewController()
+        addBookViewController.delegate = self
 
-        present(addBookViewController, animated: true)
+        present(UINavigationController(rootViewController: addBookViewController), animated: true)
     }
 }
 
@@ -165,6 +162,26 @@ extension BooksViewController: UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+
+            let book: Book
+
+            if !(searchController.searchBar.text?.isEmpty ?? true) {
+                book = filteredBooks[indexPath.row]
+                filteredBooks.remove(at: indexPath.row)
+                guard let index = books.firstIndex(of: book) else {
+                    return
+                }
+                books.remove(at: index)
+            } else {
+                books.remove(at: indexPath.row)
+            }
+
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
+    }
 }
 
 extension BooksViewController: UISearchResultsUpdating {
@@ -172,5 +189,13 @@ extension BooksViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text ?? "")
         tableView.reloadData()
+    }
+}
+
+extension BooksViewController: AddBookDelegate {
+    func handleAddBook(book: Book) {
+        books.append(book)
+        let indexPath = IndexPath(row: books.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 }

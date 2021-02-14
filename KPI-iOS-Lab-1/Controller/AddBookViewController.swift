@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol AddBookDelegate: AnyObject {
+    func handleAddBook(book: Book)
+}
+
 class AddBookViewController: UIViewController {
+
+    weak var delegate: AddBookDelegate?
 
     typealias Field = (title: String, keyboardType: UIKeyboardType)
 
@@ -37,6 +43,7 @@ class AddBookViewController: UIViewController {
         let button = GradientButton()
         button.colors = gradientColors
         button.setTitle("Submit Book", for: .normal)
+        button.addTarget(self, action: #selector(addBook), for: .touchUpInside)
 
         return button
     }()
@@ -68,7 +75,15 @@ class AddBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.interactivePopGestureRecognizer?.delaysTouchesBegan = false
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification, object: nil)
 
         setupViews()
     }
@@ -81,21 +96,9 @@ class AddBookViewController: UIViewController {
             action: #selector(UIInputViewController.dismissKeyboard))
 
         view.addGestureRecognizer(tap)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification, object: nil)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -158,6 +161,34 @@ class AddBookViewController: UIViewController {
             make.width.lessThanOrEqualToSuperview()
         }
     }
+
+    @objc private func addBook() {
+        let title = textFields[0].textField.text ?? ""
+        let subtitle = textFields[1].textField.text ?? ""
+        let priceText = textFields[2].textField.text ?? ""
+
+        guard !title.isEmpty,
+              !subtitle.isEmpty,
+              let price = Float(priceText),
+              price > 0 else {
+            let alertController = UIAlertController(
+                title: "Bad input",
+                message: "Please, check all the fields and correct mistakes.",
+                preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+
+            alertController.addAction(okAction)
+            present(alertController, animated: true)
+
+            return
+        }
+
+        let book = Book(title: title, subtitle: subtitle, isbn13: UUID().uuidString, price: "$\(price)", image: "")
+
+        self.dismiss(animated: true) {
+            self.delegate?.handleAddBook(book: book)
+        }
+    }
 }
 
 extension AddBookViewController {
@@ -170,8 +201,10 @@ extension AddBookViewController {
 
         let offset = scrollView.contentOffset
 
-        guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        guard let userInfo = notification.userInfo,
+              var keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        else { return }
+
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
 
         var contentInset: UIEdgeInsets = self.scrollView.contentInset

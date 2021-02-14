@@ -46,11 +46,14 @@ class GradientButton: UIButton {
 
         let touch = UILongPressGestureRecognizer(target: self, action: #selector(handleTouch))
         touch.minimumPressDuration = 0
+        touch.cancelsTouchesInView = false
 
         addGestureRecognizer(touch)
 
         setTitleColor(.white, for: .normal)
         titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+
+        gradientView.isUserInteractionEnabled = false
 
         insertSubview(gradientView, at: 0)
 
